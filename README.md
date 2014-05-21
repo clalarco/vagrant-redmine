@@ -20,7 +20,8 @@ Requirements
 ------------
 
 **Vagrant**. Download from http://www.vagrantup.com/downloads.html
-Version 1.5.1 was used for this configuration. 
+Version 1.5.1 was used for this configuration.
+
 Note: the included version in Ubuntu 12.04 (1.0.1) is not compatible with this configuration.
 
 **Virtualbox**, required by Vagrant: https://www.virtualbox.org/wiki/Downloads
@@ -32,8 +33,7 @@ Quick Start up
 --------------
 
 1. Install / update Vagrant, from installer file from website.
-
-2. and install virtualbox. From windows, using the installer. From Ubuntu: `sudo apt-get install virtualbox`.
+2. Install virtualbox. From windows, using the installer. From Ubuntu: `sudo apt-get install virtualbox`.
 3. Go to vagrant/ directory and write `vagrant up`. It will download box if needed and create vm.
 4. If vagrant instance was not previously created, it will do the provision from bootstrap.sh.
 5. When ready, you can open a browser and go to http://localhost:8888/redmine  user: admin, password:admin
@@ -43,7 +43,6 @@ Configuration
 -------------
 
 In bootstrap.sh you can set:
-
 - Mysql and Redmine passwords. Notice that these passwords can be set 
 through this script only when vagrant instance is created.
 - Apache2 configuration.
@@ -55,3 +54,18 @@ In Vagrantfile you can set:
 - Network type: NAT, bridge (public) or internal
 - Port redirection
 - All the settings available in Vagrant configuration.
+
+
+TODO
+----
+
+- Allow to set pgsql or sqlite
+- Set up secure mode
+- Use nginx
+- Allow to backup/restore when provisioning instance
+
+
+References
+----------
+- Vagrant website: http://www.vagrantup.com/
+- How to install Redmine in Ubuntu Step by Step: http://www.redmine.org/projects/redmine/wiki/HowTo_Install_Redmine_on_Ubuntu_step_by_step
