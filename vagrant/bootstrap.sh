@@ -5,12 +5,12 @@
 set -x
 
 # Uncomment the selected web server.
-#USE_NGINX=1
-USE_APACHE2=1
+USE_NGINX=1
+#USE_APACHE2=1
 
 # Uncomment the selected database.
-#USE_MYSQL=1
-USE_PGSQL=1
+USE_MYSQL=1
+#USE_PGSQL=1
 #USE_SQLITE3=1
 
 # Uncomment if extra images libraries for redmine will be installed.
