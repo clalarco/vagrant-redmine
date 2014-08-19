@@ -92,7 +92,7 @@ if [[ -n ${USE_NGINX} ]]; then
     --pid tmp/pids/thin.pid
 
   # Configure nginx. For now default config is overriden.
-  sudo cat > /etc/nginx/sites-available/default <<EOF
+  sudo dd of=/etc/nginx/sites-available/default << EOF
 upstream redmine_upstream {
         server unix:/tmp/thin.redmine.0.sock;
         server unix:/tmp/thin.redmine.1.sock;
@@ -134,7 +134,7 @@ elif [[ -n ${USE_APACHE2} ]]; then
   sudo ln -s /usr/share/redmine/public /var/www/redmine
 
   # Override apache settings.
-  sudo cat > /etc/apache2/sites-available/000-default.conf <<EOF
+  sudo dd of=/etc/apache2/sites-available/000-default.conf <<EOF
 <VirtualHost *:80>
       ServerAdmin webmaster@localhost
       DocumentRoot /var/www/redmine
@@ -148,7 +148,7 @@ elif [[ -n ${USE_APACHE2} ]]; then
 EOF
 
   # Configure passenger
-  sudo cat > /etc/apache2/mods-available/passenger.conf <<EOF
+  sudo dd of=/etc/apache2/mods-available/passenger.conf <<EOF
 <IfModule mod_passenger.c>
 PassengerDefaultUser www-data
 PassengerRoot /usr/lib/ruby/vendor_ruby/phusion_passenger/locations.ini
