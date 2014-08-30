@@ -29,24 +29,24 @@ sudo apt-get update
 # Install and setup database.
 if [[ -n ${USE_MYSQL} ]]; then
   # Setup and install mysql-server
-  echo 'redmine redmine/instances/default/database-type select mysql' | sudo debconf-set-selections
-  echo 'redmine redmine/instances/default/mysql/method select unix socket' | sudo debconf-set-selections
-  echo 'redmine redmine/instances/default/mysql/app-pass password ${DB_PASSWORD}' | sudo debconf-set-selections
-  echo 'redmine redmine/instances/default/mysql/admin-pass password ${DB_PASSWORD}' | sudo debconf-set-selections
-  echo 'mysql-server mysql-server/root_password password ${DB_PASSWORD}' | sudo debconf-set-selections
-  echo 'mysql-server mysql-server/root_password_again password ${DB_PASSWORD}' | sudo debconf-set-selections
+  echo "redmine redmine/instances/default/database-type select mysql" | sudo debconf-set-selections
+  echo "redmine redmine/instances/default/mysql/method select unix socket" | sudo debconf-set-selections
+  echo "redmine redmine/instances/default/mysql/app-pass password ${DB_PASSWORD}" | sudo debconf-set-selections
+  echo "redmine redmine/instances/default/mysql/admin-pass password ${DB_PASSWORD}" | sudo debconf-set-selections
+  echo "mysql-server mysql-server/root_password password ${DB_PASSWORD}" | sudo debconf-set-selections
+  echo "mysql-server mysql-server/root_password_again password ${DB_PASSWORD}" | sudo debconf-set-selections
   sudo apt-get install -q -y mysql-server mysql-client
   sudo apt-get install -q -y redmine-mysql
 elif [[ -n ${USE_PGSQL} ]]; then
   # Setup and install pgsql-server
-  echo 'redmine redmine/instances/default/database-type select pgsql' | sudo debconf-set-selections
-  echo 'redmine redmine/instances/default/pgsql/method select unix socket' | sudo debconf-set-selections
-  echo 'redmine redmine/instances/default/pgsql/authmethod-admin select ident' | sudo debconf-set-selections
-  echo 'redmine redmine/instances/default/pgsql/authmethod-user select ident' | sudo debconf-set-selections
-  echo 'redmine redmine/instances/default/pgsql/app-pass password' | sudo debconf-set-selections
-  echo 'redmine redmine/instances/default/pgsql/admin-pass password' | sudo debconf-set-selections
-  echo 'dbconfig-common dbconfig-common/pgsql/authmethod-admin select ident' | sudo debconf-set-selections
-  echo 'dbconfig-common dbconfig-common/pgsql/authmethod-user select ident' | sudo debconf-set-selections
+  echo "redmine redmine/instances/default/database-type select pgsql" | sudo debconf-set-selections
+  echo "redmine redmine/instances/default/pgsql/method select unix socket" | sudo debconf-set-selections
+  echo "redmine redmine/instances/default/pgsql/authmethod-admin select ident" | sudo debconf-set-selections
+  echo "redmine redmine/instances/default/pgsql/authmethod-user select ident" | sudo debconf-set-selections
+  echo "redmine redmine/instances/default/pgsql/app-pass password" | sudo debconf-set-selections
+  echo "redmine redmine/instances/default/pgsql/admin-pass password" | sudo debconf-set-selections
+  echo "dbconfig-common dbconfig-common/pgsql/authmethod-admin select ident" | sudo debconf-set-selections
+  echo "dbconfig-common dbconfig-common/pgsql/authmethod-user select ident" | sudo debconf-set-selections
   sudo apt-get install -q -y postgresql postgresql-contrib
   sudo apt-get install -q -y redmine-pgsql
 elif [[ -n ${USE_SQLITE3} ]]; then
@@ -56,9 +56,9 @@ elif [[ -n ${USE_SQLITE3} ]]; then
 fi
 
 # Install redmine.
-echo 'redmine redmine/instances/default/app-password password ${REDMINE_PASSWORD}' | sudo debconf-set-selections
-echo 'redmine redmine/instances/default/app-password-confirm password ${REDMINE_PASSWORD}' | sudo debconf-set-selections
-echo 'redmine redmine/instances/default/dbconfig-install boolean true' | sudo debconf-set-selections
+echo "redmine redmine/instances/default/app-password password ${REDMINE_PASSWORD}" | sudo debconf-set-selections
+echo "redmine redmine/instances/default/app-password-confirm password ${REDMINE_PASSWORD}" | sudo debconf-set-selections
+echo "redmine redmine/instances/default/dbconfig-install boolean true" | sudo debconf-set-selections
 sudo apt-get install -q -y redmine
 
 # Extra required package for ubuntu 14.04 to make redmine work.
